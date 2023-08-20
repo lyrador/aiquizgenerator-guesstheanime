@@ -1,5 +1,7 @@
 # AI Quiz Generator - Guess the Anime!
  An AI Quiz Generator that utilises LLM to generate fun and accurate descriptions of anime without character names for you to guess
+
+ This game is different from any other 'guess the anime' game. By passing the information of anime shows into a LLM, enhanced functionality is added, such as rephrasing the description of anime while keeping the same meaning and removing obvious character names, making the game more fun and challenging.
  
  ![AIQuizGenerator-GuessTheAnimeScreenshot](https://github.com/lyrador/aiquizgenerator-guesstheanime/assets/65401176/4a97414b-ce30-403e-88f7-1a75a615283d)
 
