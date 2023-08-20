@@ -2,19 +2,19 @@ import constants
 import os
 import re
 import streamlit as st
+import pandas as pd
 from langchain.document_loaders import CSVLoader
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.indexes import VectorstoreIndexCreator
 
-import pandas as pd
-
+### Settings
 pd.set_option('display.max_colwidth', None)
 pd.set_option('display.max_columns', None)
 df = pd.read_csv('cleanedQuizData.csv')
-
 os.environ["OPENAI_API_KEY"] = constants.APIKEY
 embeddings = OpenAIEmbeddings()
 
+### Functions
 def initialiseSessionState():
     if 'generateDisabled' not in st.session_state:
         st.session_state['generateDisabled'] = False
@@ -57,7 +57,8 @@ def generateQuiz():
         query = 'I am making a guessing game. There are details about an anime in the csv provided. Use 30 to 40 words to rephrase and describe the synopsis starting with "This is a story about". After the description, write "///". After "///", give the title of the anime starting with "The anime title is". Do not use any character names in this reponse.'
         llmResponse = index.query(query)
         st.session_state['llmResponseArr'] = llmResponse.split("///")
-  
+
+### Main App
 initialiseSessionState()
 st.title('Quiz Generator - Guess the Anime!')
 startRangeYear = st.selectbox('Start Range - Anime that starting airing from year:', range(1978, 2023))
